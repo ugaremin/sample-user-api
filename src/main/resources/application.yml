@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/user_local
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      pool-name: user_pool
+      maximum-pool-size: 20
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtsCacheSize: 250
+        prepStmtsCacheSqlLimitx: 2048
+        useServerPrepStmts: true
+      username: localuser
+      password: password
+  jpa:
+    database: POSTGRESQL
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      use-new-id-generator-mappings: true
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+    liquibase:
+      change-log: classpath:db/changelog/db.changelog-master.xml
+swagger:
+  host:
+    url: localhost:8080
+    path:
